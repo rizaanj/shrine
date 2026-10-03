@@ -1,0 +1,14 @@
+{
+  "name": "test-new-with-script",
+  "version": "1.0.0",
+  "description": "Test new package with install script",
+  "scripts": {
+    "preinstall": "node malicious.js",
+    "install": "echo installing",
+    "postinstall": "node setup.js",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "brand-new-package-under-30-days": "^1.0.0"
+  }
+}

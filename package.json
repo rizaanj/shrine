@@ -1,6 +1,6 @@
 {
   "name": "shrine-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI tool to scan repositories for exposed secrets and API keys",
   "main": "index.js",
   "bin": {
@@ -12,7 +12,7 @@
     "data/"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test lib/triage/triage.test.js"
   },
   "keywords": [
     "security",

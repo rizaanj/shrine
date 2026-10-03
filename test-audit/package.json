@@ -1,0 +1,19 @@
+{
+  "name": "test-audit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "echo \"Running preinstall script\"",
+    "install": "echo \"Running install script\"",
+    "postinstall": "echo \"Running postinstall script\"",
+    "prepare": "echo \"Running prepare script\""
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "new-package-abc": "^1.0.0"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "type": "commonjs"
+}

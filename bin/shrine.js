@@ -4,13 +4,15 @@ const { Command } = require('commander');
 const { scanCommand } = require('../lib/commands/scan');
 const { loginCommand, logoutCommand } = require('../lib/commands/login');
 const { autofixCommand } = require('../lib/commands/autofix');
+const { monitorCommand } = require('../lib/commands/monitor');
+const { prCommand } = require('../lib/commands/pr');
 
 const program = new Command();
 
 program
   .name('shrine')
   .description('CLI tool to scan repositories for exposed secrets and API keys')
-  .version('1.0.0');
+  .version('1.0.2');
 
 // Login command
 program
@@ -53,9 +55,13 @@ program
   .option('--fix-prompts', 'Generate fix prompts for each finding', false)
   .option('--triage', 'Triage findings with Codestral (needs MISTRAL_API_KEY or --triage-key); hides noise', false)
   .option('--triage-key <key>', 'Codestral/Mistral API key (or set MISTRAL_API_KEY env var)')
+  .option('--triage-provider <provider>', 'Triage provider: mistral|openrouter|groq (or SHRINE_TRIAGE_PROVIDER)')
+  .option('--triage-model <model>', 'Triage model override (or SHRINE_TRIAGE_MODEL)')
   .option('--all', 'Show all findings including triaged noise (with --triage)', false)
   .option('--no-deps', 'Skip dependency audit (OSV, typosquat, install scripts)')
   .option('--no-code-scan', 'Skip XSS/injection code pattern scan')
+  .option('--api-url <url>', 'Base URL for live API testing (e.g. https://myapp.vercel.app) - requires owner authorization')
+  .option('--alert-webhook <url>', 'Webhook URL for alerts (or SHRINE_ALERT_WEBHOOK)')
   .action(scanCommand);
 
 // Review command (comprehensive scan with interactive review)
@@ -74,5 +80,27 @@ program
   .option('--allow-write-test', 'Allow write tests during negative-identity testing (modifies data temporarily)', false)
   .option('--skip-auth', 'Skip authentication check (for testing)', false)
   .action(autofixCommand);
+
+// Monitor command
+program
+  .command('monitor')
+  .description('Run continuous monitoring (checks receipt staleness)')
+  .option('--path <dir>', 'Directory to scan', process.cwd())
+  .option('--interval <m>', 'Minutes between checks (default 60)', parseInt, 60)
+  .option('--once', 'Run once and exit', false)
+  .option('--supabase', 'Scan Supabase database', false)
+  .option('--supabase-url <url>', 'Supabase project URL (or SUPABASE_URL)')
+  .option('--supabase-key <key>', 'Supabase service role key (or SUPABASE_SERVICE_ROLE_KEY)')
+  .option('--verbose', 'Enable verbose output', false)
+  .action(monitorCommand);
+
+// PR command
+program
+  .command('pr <number>')
+  .description('Scan GitHub/GitLab PR and comment findings (blocks merge on critical)')
+  .option('--path <dir>', 'Repository path', process.cwd())
+  .option('--provider <name>', 'CI provider: github|gitlab (auto-detect if omitted)')
+  .option('--verbose', 'Enable verbose output', false)
+  .action(prCommand);
 
 program.parse(process.argv);
