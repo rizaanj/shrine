@@ -55,6 +55,7 @@ program
   .option('--triage-key <key>', 'Codestral/Mistral API key (or set MISTRAL_API_KEY env var)')
   .option('--all', 'Show all findings including triaged noise (with --triage)', false)
   .option('--no-deps', 'Skip dependency audit (OSV, typosquat, install scripts)')
+  .option('--no-code-scan', 'Skip XSS/injection code pattern scan')
   .action(scanCommand);
 
 // Review command (comprehensive scan with interactive review)
