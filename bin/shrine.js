@@ -54,6 +54,7 @@ program
   .option('--triage', 'Triage findings with Codestral (needs MISTRAL_API_KEY or --triage-key); hides noise', false)
   .option('--triage-key <key>', 'Codestral/Mistral API key (or set MISTRAL_API_KEY env var)')
   .option('--all', 'Show all findings including triaged noise (with --triage)', false)
+  .option('--no-deps', 'Skip dependency audit (OSV, typosquat, install scripts)', false)
   .action(scanCommand);
 
 // Review command (comprehensive scan with interactive review)
