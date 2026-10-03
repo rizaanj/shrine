@@ -1,0 +1,1 @@
+http://demo.testfire.net/search.jsp?query=test (GET)  # C:\Users\LEGEN\AppData\Local\Programs\Python\Python313\Scripts\sqlmap -u http://demo.testfire.net/search.jsp?query=test --batch --level=1 --risk=1 --output-dir=E:\Shrine\sqlmap_output

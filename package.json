@@ -1,0 +1,35 @@
+{
+  "name": "shrine-cli",
+  "version": "1.0.1",
+  "description": "CLI tool to scan repositories for exposed secrets and API keys",
+  "main": "index.js",
+  "bin": {
+    "shrine": "./bin/shrine.js"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "security",
+    "secrets",
+    "scanner",
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@babel/parser": "^8.0.6",
+    "@babel/traverse": "^8.0.6",
+    "@supabase/supabase-js": "^2.117.2",
+    "chalk": "^4.1.2",
+    "commander": "^15.0.0",
+    "fast-glob": "^3.3.3",
+    "jsonwebtoken": "^9.0.3",
+    "simple-git": "^4.0.1"
+  }
+}

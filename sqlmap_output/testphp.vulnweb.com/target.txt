@@ -1,0 +1,1 @@
+http://testphp.vulnweb.com/artists.php?artist=1 (GET)  # C:\Users\LEGEN\AppData\Local\Programs\Python\Python313\Scripts\sqlmap -u http://testphp.vulnweb.com/artists.php?artist=1 --batch --level=1 --risk=1 --output-dir=E:\Shrine\sqlmap_output
