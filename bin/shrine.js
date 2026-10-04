@@ -6,6 +6,7 @@ const { loginCommand, logoutCommand } = require('../lib/commands/login');
 const { autofixCommand } = require('../lib/commands/autofix');
 const { monitorCommand } = require('../lib/commands/monitor');
 const { prCommand } = require('../lib/commands/pr');
+const { reviewCommand } = require('../lib/commands/review');
 
 const program = new Command();
 
@@ -64,11 +65,12 @@ program
   .option('--alert-webhook <url>', 'Webhook URL for alerts (or SHRINE_ALERT_WEBHOOK)')
   .action(scanCommand);
 
-// Review command (comprehensive scan with interactive review)
+// Review command
 program
   .command('review')
-  .description('Scan everything and review fix prompts interactively (does not edit files)')
+  .description('Scan and interactively apply fixes with diff preview')
   .option('--path <dir>', 'Directory to scan', process.cwd())
+  .option('--apply', 'Auto-apply all fixes without confirmation (DANGEROUS)', false)
   .option('--verbose', 'Enable verbose output', false)
   .option('--include-tests', 'Include test directories in scan', false)
   .option('--respect-gitignore', 'Only scan files not ignored by .gitignore (default scans everything)', false)
@@ -78,8 +80,7 @@ program
   .option('--supabase-key <key>', 'Supabase service role key (or set SUPABASE_SERVICE_ROLE_KEY env var)')
   .option('--supabase-anon-key <key>', 'Supabase anon/public key for negative-identity testing (or set SUPABASE_ANON_KEY env var)')
   .option('--allow-write-test', 'Allow write tests during negative-identity testing (modifies data temporarily)', false)
-  .option('--skip-auth', 'Skip authentication check (for testing)', false)
-  .action(autofixCommand);
+  .action(reviewCommand);
 
 // Monitor command
 program
