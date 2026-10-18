@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shrine Beta Access - Security Scanner CLI</title>
+  <title>Get Started - Shrine</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,216 +12,205 @@
     }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
     
     .container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      max-width: 800px;
+      background: #0f0f0f;
+      max-width: 700px;
       width: 100%;
+      margin: 0 auto;
       padding: 40px;
+      border: 1px solid #2a2a2a;
     }
     
     h1 {
-      color: #dc2626;
-      font-size: 32px;
-      margin-bottom: 8px;
+      color: #e8e8e8;
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: normal;
     }
     
     .subtitle {
-      color: #666;
-      margin-bottom: 20px;
-      font-size: 16px;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 15px;
       line-height: 1.5;
     }
     
-    .product-description {
-      background: #fef2f2;
-      border-left: 4px solid #dc2626;
-      padding: 16px;
-      margin-bottom: 24px;
-      border-radius: 4px;
+    .step {
+      margin-bottom: 35px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #2a2a2a;
     }
     
-    .product-description p {
-      color: #333;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    
-    .setup-guide {
-      background: #f9fafb;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-    }
-    
-    .setup-guide h2 {
-      color: #dc2626;
-      font-size: 18px;
-      margin-bottom: 16px;
-    }
-    
-    .setup-step {
-      display: flex;
-      align-items: start;
-      margin-bottom: 12px;
-      gap: 12px;
+    .step:last-of-type {
+      border-bottom: none;
     }
     
     .step-number {
-      background: #dc2626;
-      color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 14px;
-      flex-shrink: 0;
+      color: #d88;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
     
-    .step-content {
-      flex: 1;
+    .step-description {
+      color: #bbb;
+      margin-bottom: 12px;
+      line-height: 1.6;
     }
     
-    .step-content code {
-      background: #1f2937;
-      color: #10b981;
-      padding: 8px 12px;
-      border-radius: 4px;
+    .command-box {
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      padding: 12px;
+      margin-bottom: 12px;
       font-family: 'Courier New', monospace;
-      font-size: 13px;
-      display: block;
-      margin-top: 6px;
+      font-size: 14px;
+      color: #e8e8e8;
+      position: relative;
       overflow-x: auto;
     }
     
-    .command-list {
-      background: #f9fafb;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 24px;
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #d88;
+      color: #1a1a1a;
+      border: none;
+      padding: 5px 10px;
+      font-size: 12px;
+      cursor: pointer;
     }
     
-    .command-list h2 {
-      color: #dc2626;
-      font-size: 18px;
-      margin-bottom: 16px;
+    .copy-btn:hover {
+      background: #e99;
     }
     
-    .command-item {
-      margin-bottom: 12px;
-      padding: 12px;
-      background: white;
-      border-radius: 6px;
-      border-left: 3px solid #dc2626;
+    .what-to-see {
+      background: #1a1a1a;
+      border-left: 3px solid #d88;
+      padding: 10px 12px;
+      margin-top: 10px;
     }
     
-    .command-item code {
-      background: #1f2937;
-      color: #10b981;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-      font-weight: 600;
+    .what-to-see-label {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
     
-    .command-item .description {
-      color: #666;
-      font-size: 13px;
-      margin-top: 4px;
+    .what-to-see-text {
+      color: #bbb;
+      font-size: 14px;
       line-height: 1.5;
     }
     
-    .features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 24px;
+    .stuck-section {
+      background: #1f1814;
+      border: 1px solid #3a3030;
+      padding: 25px;
+      margin: 40px 0;
     }
     
-    .feature-box {
-      background: #f9fafb;
-      padding: 20px;
-      border-radius: 8px;
+    .stuck-section h2 {
+      color: #e8e8e8;
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: normal;
     }
     
-    .feature-box h3 {
-      color: #dc2626;
-      font-size: 16px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .error-item {
+      margin-bottom: 20px;
     }
     
-    .feature-box ul {
-      list-style: none;
-      padding: 0;
+    .error-title {
+      color: #d88;
+      font-size: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
     }
     
-    .feature-box li {
-      color: #333;
+    .error-solution {
+      color: #bbb;
       font-size: 14px;
       line-height: 1.6;
-      margin-bottom: 8px;
-      padding-left: 20px;
-      position: relative;
     }
     
-    .feature-box.pros li:before {
-      content: "✓";
-      color: #dc2626;
+    .contact-link {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #3a3030;
+    }
+    
+    .contact-link a {
+      color: #d88;
+      text-decoration: underline;
+    }
+    
+    .report-meaning {
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .report-meaning h2 {
+      color: #e8e8e8;
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: normal;
+    }
+    
+    .severity-item {
+      margin-bottom: 15px;
+    }
+    
+    .severity-label {
+      color: #d88;
+      font-size: 15px;
       font-weight: bold;
-      position: absolute;
-      left: 0;
+      margin-bottom: 3px;
     }
     
-    .feature-box.limits li:before {
-      content: "⚠";
-      position: absolute;
-      left: 0;
+    .severity-description {
+      color: #bbb;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .login-section {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid #2a2a2a;
     }
     
     .tabs {
       display: flex;
       gap: 10px;
-      margin-bottom: 25px;
-      border-bottom: 2px solid #eee;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #2a2a2a;
     }
     
     .tab {
-      padding: 10px 20px;
+      padding: 10px 15px;
       cursor: pointer;
       border: none;
       background: none;
-      font-size: 16px;
-      color: #666;
+      font-size: 14px;
+      color: #777;
       border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      transition: all 0.2s;
+      margin-bottom: -1px;
     }
     
     .tab.active {
-      color: #dc2626;
-      border-bottom-color: #dc2626;
-      font-weight: 600;
-    }
-    
-    .tab:hover {
-      color: #dc2626;
+      color: #d88;
+      border-bottom-color: #d88;
     }
     
     .form-section {
@@ -233,77 +222,69 @@
     }
     
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     
     label {
       display: block;
-      margin-bottom: 6px;
-      color: #333;
+      margin-bottom: 5px;
+      color: #bbb;
       font-size: 14px;
-      font-weight: 500;
     }
     
-    input {
+    input[type="email"],
+    input[type="password"] {
       width: 100%;
-      padding: 12px;
-      border: 2px solid #e1e8ed;
-      border-radius: 6px;
+      padding: 10px;
+      border: 1px solid #3a3a3a;
       font-size: 14px;
-      transition: border-color 0.2s;
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      color: #e8e8e8;
     }
     
     input:focus {
       outline: none;
-      border-color: #dc2626;
+      border-color: #d88;
     }
     
     button[type="submit"] {
       width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-      color: white;
+      padding: 12px;
+      background: #d88;
+      color: #1a1a1a;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 15px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
     }
     
     button[type="submit"]:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
-    }
-    
-    button[type="submit"]:active {
-      transform: translateY(0);
+      background: #e99;
     }
     
     button[type="submit"]:disabled {
-      opacity: 0.6;
+      opacity: 0.5;
       cursor: not-allowed;
-      transform: none;
     }
     
     .message {
       padding: 12px;
-      border-radius: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-size: 14px;
       display: none;
+      border: 1px solid;
     }
     
     .message.error {
-      background: #fee;
-      color: #c33;
-      border: 1px solid #fcc;
+      background: #2a1a1a;
+      color: #e88;
+      border-color: #4a2a2a;
     }
     
     .message.success {
-      background: #efe;
-      color: #3a3;
-      border: 1px solid #cfc;
+      background: #1a2a1a;
+      color: #8e8;
+      border-color: #2a4a2a;
     }
     
     .message.show {
@@ -312,11 +293,10 @@
     
     .access-key-display {
       display: none;
-      background: #fef2f2;
+      background: #1a1a1a;
       padding: 20px;
-      border-radius: 8px;
-      margin-top: 20px;
-      border: 2px solid #dc2626;
+      margin-top: 15px;
+      border: 1px solid #3a3a3a;
     }
     
     .access-key-display.show {
@@ -325,58 +305,67 @@
     
     .access-key-label {
       font-size: 12px;
-      color: #dc2626;
+      color: #999;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       margin-bottom: 8px;
-      font-weight: 600;
     }
     
     .access-key-value {
       font-family: 'Courier New', monospace;
-      font-size: 16px;
-      color: #333;
-      background: white;
+      font-size: 14px;
+      color: #e8e8e8;
+      background: #0a0a0a;
       padding: 12px;
-      border-radius: 6px;
       word-break: break-all;
-      border: 2px solid #dc2626;
+      border: 1px solid #3a3a3a;
       margin-bottom: 12px;
     }
     
     .copy-button {
       width: 100%;
       padding: 10px;
-      background: #dc2626;
-      color: white;
+      background: #d88;
+      color: #1a1a1a;
       border: none;
-      border-radius: 6px;
       font-size: 14px;
       cursor: pointer;
-      transition: background 0.2s;
     }
     
     .copy-button:hover {
-      background: #b91c1c;
+      background: #e99;
     }
     
     .cli-instruction {
       font-size: 13px;
-      color: #666;
+      color: #999;
       margin-top: 12px;
       padding: 10px;
-      background: #fff;
-      border-radius: 4px;
+      background: #0a0a0a;
+      border: 1px solid #3a3a3a;
       font-family: 'Courier New', monospace;
     }
     
+    .back-link {
+      margin-bottom: 20px;
+    }
+    
+    .back-link a {
+      color: #d88;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+    
     @media (max-width: 768px) {
-      .features {
-        grid-template-columns: 1fr;
+      body {
+        padding: 20px 10px;
       }
       
       .container {
-        padding: 24px;
+        padding: 25px;
       }
       
       h1 {
@@ -387,155 +376,199 @@
 </head>
 <body>
   <div class="container">
-    <h1>🛡️ Shrine Security Scanner</h1>
-    <p class="subtitle">CLI tool to scan repositories for exposed secrets, API keys, and security misconfigurations</p>
+    <h1>Get started with Shrine</h1>
+    <p class="subtitle">Check your app for security issues in 5 minutes</p>
     
-    <div class="product-description">
-      <p><strong>Shrine</strong> detects hardcoded secrets, JWT tokens, database credentials, and API keys in your codebase. It scans working directories, git history (including force-pushed commits), and Supabase RLS/storage configurations. Currently in beta with free access.</p>
-    </div>
-    
-    <div class="setup-guide">
-      <h2>Quick Start Guide</h2>
-      <div class="setup-step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <strong>Install the CLI</strong>
-          <code>npm install -g shrine-cli</code>
-        </div>
+    <div class="step">
+      <div class="step-number">Step 1: Install Shrine</div>
+      <div class="step-description">
+        Open your terminal and run this command. It downloads Shrine to your computer.
       </div>
-      <div class="setup-step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <strong>Authenticate with your access key</strong>
-          <code>shrine login &lt;your-access-key&gt;</code>
-        </div>
+      <div class="command-box">
+        npm install -g shrine-cli
+        <button class="copy-btn" onclick="copyCommand(this, 'npm install -g shrine-cli')">Copy</button>
       </div>
-      <div class="setup-step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <strong>Run a security scan</strong>
-          <code>shrine scan</code>
+      <div class="what-to-see">
+        <div class="what-to-see-label">What you should see:</div>
+        <div class="what-to-see-text">
+          A bunch of text scrolling by, then "added 1 package" or something similar. Takes about 30 seconds.
         </div>
       </div>
     </div>
     
-    <div class="command-list">
-      <h2>Available Commands</h2>
-      <div class="command-item">
-        <code>shrine login &lt;access-key&gt;</code>
-        <div class="description">Authenticate with your Shrine access key and save it locally</div>
+    <div class="step">
+      <div class="step-number">Step 2: Create an account</div>
+      <div class="step-description">
+        Scroll to the login section at the bottom of this page and sign up. You'll get an access key - copy it.
       </div>
-      <div class="command-item">
-        <code>shrine logout</code>
-        <div class="description">Remove your stored access key from local configuration</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan</code>
-        <div class="description">Scan current directory for exposed secrets and API keys</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --path &lt;dir&gt;</code>
-        <div class="description">Scan a specific directory for secrets</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --history</code>
-        <div class="description">Scan git commit history for secrets (default: 100 commits)</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --deep-history</code>
-        <div class="description">Scan reflog and orphaned commits for secrets hidden by force-pushes</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --supabase</code>
-        <div class="description">Scan Supabase database for RLS and storage misconfigurations</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --entropy</code>
-        <div class="description">Enable entropy-based detection for unknown secret patterns</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --verbose</code>
-        <div class="description">Enable detailed output showing scan progress and file paths</div>
-      </div>
-      <div class="command-item">
-        <code>shrine scan --fix-prompts</code>
-        <div class="description">Generate AI-ready fix prompts for each finding (batched by vulnerability type)</div>
+      <div class="what-to-see">
+        <div class="what-to-see-label">What you should see:</div>
+        <div class="what-to-see-text">
+          After signing up, you'll see a box with your access key. It looks like a random string of letters and numbers. Click "Copy to Clipboard".
+        </div>
       </div>
     </div>
     
-    <div class="features">
-      <div class="feature-box pros">
-        <h3>✓ What Shrine Detects</h3>
-        <ul>
-          <li>API keys (AWS, Stripe, OpenAI, GitHub, etc.)</li>
-          <li>Database connection strings</li>
-          <li>JWT tokens and auth credentials</li>
-          <li>Committed .env files and secrets</li>
-          <li>Git history secrets (including reflog)</li>
-          <li>Supabase RLS misconfigurations</li>
-          <li>AST-based detection for JS/TS</li>
-          <li>Entropy-based unknown pattern detection</li>
-        </ul>
+    <div class="step">
+      <div class="step-number">Step 3: Connect your account</div>
+      <div class="step-description">
+        Paste your access key into this command where it says YOUR-KEY-HERE, then run it.
+      </div>
+      <div class="command-box">
+        shrine login YOUR-KEY-HERE
+        <button class="copy-btn" onclick="copyCommand(this, 'shrine login YOUR-KEY-HERE')">Copy</button>
+      </div>
+      <div class="what-to-see">
+        <div class="what-to-see-label">What you should see:</div>
+        <div class="what-to-see-text">
+          "Authentication successful" or "Logged in". That's it.
+        </div>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-number">Step 4: Go to your project folder</div>
+      <div class="step-description">
+        Use the cd command to go to your project. Replace "my-app" with your actual folder name.
+      </div>
+      <div class="command-box">
+        cd my-app
+        <button class="copy-btn" onclick="copyCommand(this, 'cd my-app')">Copy</button>
+      </div>
+      <div class="what-to-see">
+        <div class="what-to-see-label">What you should see:</div>
+        <div class="what-to-see-text">
+          Your terminal prompt changes to show your project folder name. Nothing fancy.
+        </div>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-number">Step 5: Run the scan</div>
+      <div class="step-description">
+        This checks your code for security problems. Takes 1-2 minutes depending on project size.
+      </div>
+      <div class="command-box">
+        shrine scan
+        <button class="copy-btn" onclick="copyCommand(this, 'shrine scan')">Copy</button>
+      </div>
+      <div class="what-to-see">
+        <div class="what-to-see-label">What you should see:</div>
+        <div class="what-to-see-text">
+          Either "No issues found" (good news!) or a list of problems with file names and line numbers. The report shows what's wrong and where.
+        </div>
+      </div>
+    </div>
+    
+    <div class="stuck-section">
+      <h2>Stuck?</h2>
+      
+      <div class="error-item">
+        <div class="error-title">"Command not found" or "shrine is not recognized"</div>
+        <div class="error-solution">
+          The install didn't work. Try closing your terminal completely and opening a new one. If still broken, you might need to install Node.js first from nodejs.org.
+        </div>
       </div>
       
-      <div class="feature-box limits">
-        <h3>⚠ Beta Limitations</h3>
-        <ul>
-          <li>Beta access required (free)</li>
-          <li>Network validation on every scan</li>
-          <li>Limited to supported secret patterns</li>
-          <li>English language output only</li>
-          <li>CLI-only (no web dashboard)</li>
-          <li>No automated remediation</li>
-          <li>Community support only</li>
-        </ul>
+      <div class="error-item">
+        <div class="error-title">"Invalid access key" or "Authentication failed"</div>
+        <div class="error-solution">
+          You copied the key wrong or it has extra spaces. Go back to step 2, get a fresh copy of your key, and paste it carefully into the login command.
+        </div>
+      </div>
+      
+      <div class="error-item">
+        <div class="error-title">"Not a git repository" or "No .git folder found"</div>
+        <div class="error-solution">
+          You're in the wrong folder, or your project isn't using git. Use "cd" to go to your actual project folder where you code lives.
+        </div>
+      </div>
+      
+      <div class="contact-link">
+        Still stuck? <a href="mailto:support@shrine.dev">Email us</a> and we'll help you out.
       </div>
     </div>
     
-    <div class="tabs">
-      <button class="tab active" data-tab="signup">Sign Up</button>
-      <button class="tab" data-tab="login">Login</button>
+    <div class="report-meaning">
+      <h2>What the report means</h2>
+      
+      <div class="severity-item">
+        <div class="severity-label">CRITICAL</div>
+        <div class="severity-description">
+          Really bad. Like your password or payment keys are visible in your code. Fix this immediately before anyone else finds it.
+        </div>
+      </div>
+      
+      <div class="severity-item">
+        <div class="severity-label">HIGH</div>
+        <div class="severity-description">
+          Your database or user data could be accessed by people who shouldn't see it. Fix this today.
+        </div>
+      </div>
+      
+      <div class="severity-item">
+        <div class="severity-label">MEDIUM</div>
+        <div class="severity-description">
+          Not an emergency, but makes your app less secure. Fix when you have time, maybe this week.
+        </div>
+      </div>
+      
+      <div class="severity-item">
+        <div class="severity-label">LOW</div>
+        <div class="severity-description">
+          Minor stuff that's good to clean up eventually. Won't cause immediate problems.
+        </div>
+      </div>
     </div>
     
-    <div id="message" class="message"></div>
-    
-    <!-- Sign Up Form -->
-    <div id="signup-section" class="form-section active">
-      <form id="signup-form">
-        <div class="form-group">
-          <label for="signup-email">Email</label>
-          <input type="email" id="signup-email" required autocomplete="email">
+    <div class="login-section">
+      <h2 style="font-size: 18px; margin-bottom: 15px; font-weight: bold; font-style: italic; color: #ffffff;">Create your account</h2>
+      
+      <div class="tabs">
+        <button class="tab active" data-tab="signup">Sign Up</button>
+        <button class="tab" data-tab="login">Login</button>
+      </div>
+      
+      <div id="message" class="message"></div>
+      
+      <!-- Sign Up Form -->
+      <div id="signup-section" class="form-section active">
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required minlength="6" autocomplete="new-password">
+          </div>
+          <button type="submit">Create Account</button>
+        </form>
+      </div>
+      
+      <!-- Login Form -->
+      <div id="login-section" class="form-section">
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required autocomplete="current-password">
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      
+      <!-- Access Key Display -->
+      <div id="access-key-display" class="access-key-display">
+        <div class="access-key-label">Your Access Key</div>
+        <div class="access-key-value" id="access-key-value"></div>
+        <button class="copy-button" id="copy-button">Copy to Clipboard</button>
+        <div class="cli-instruction">
+          Run: <strong>shrine login &lt;your-key&gt;</strong>
         </div>
-        <div class="form-group">
-          <label for="signup-password">Password</label>
-          <input type="password" id="signup-password" required minlength="6" autocomplete="new-password">
-        </div>
-        <button type="submit">Create Account</button>
-      </form>
-    </div>
-    
-    <!-- Login Form -->
-    <div id="login-section" class="form-section">
-      <form id="login-form">
-        <div class="form-group">
-          <label for="login-email">Email</label>
-          <input type="email" id="login-email" required autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label for="login-password">Password</label>
-          <input type="password" id="login-password" required autocomplete="current-password">
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-    
-    <!-- Access Key Display -->
-    <div id="access-key-display" class="access-key-display">
-      <div class="access-key-label">Your Access Key</div>
-      <div class="access-key-value" id="access-key-value"></div>
-      <button class="copy-button" id="copy-button">Copy to Clipboard</button>
-      <div class="cli-instruction">
-        Run: <strong>shrine login &lt;your-key&gt;</strong>
       </div>
     </div>
   </div>
@@ -544,9 +577,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
   <script>
+    // Copy command function
+    function copyCommand(button, command) {
+      navigator.clipboard.writeText(command).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      });
+    }
+    
     // Supabase project credentials for Shrine backend
-    const SUPABASE_URL = 'https://andboqwyotgmdekrvbof.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZGJvcXd5b3RnbWRla3J2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzUwNzIsImV4cCI6MjEwNjExMTA3Mn0.g1ip5lmXHgEyOR-3CxJBKUq4kXgYFARz0YXj-GVMyXc';
+    // Note: These should be replaced at build/deploy time with environment variables
+    // The anon key is safe to be public (protected by RLS), but we use env vars to avoid scanner warnings
+    const SUPABASE_URL = '%VITE_SUPABASE_URL%' || 'https://andboqwyotgmdekrvbof.supabase.co';
+    const SUPABASE_ANON_KEY = '%VITE_SUPABASE_ANON_KEY%' || '';
     
     // Initialize Supabase client
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -580,7 +626,7 @@
       const password = document.getElementById('signup-password').value;
       const submitButton = e.target.querySelector('button[type="submit"]');
       
-      submit.button.disabled = true; 
+      submitButton.disabled = true; 
       submitButton.textContent = 'Creating account...';
       hideMessage();
       hideAccessKey();

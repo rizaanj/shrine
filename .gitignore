@@ -2,3 +2,11 @@ node_modules/
 .shrine-cache/
 *.log
 stream-test/
+test-full-mode/
+test-jwt-scenarios/
+test-jwt-comprehensive.js
+test-anon-access.js
+test-anon-access-specific.js
+test-code-patterns/
+.env
+.shrine-score/

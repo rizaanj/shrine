@@ -998,5 +998,7 @@
   "array.prototype.findlastindex",
   "@opentelemetry/sdk-metrics",
   "@babel/plugin-transform-for-of",
-  "@emnapi/core"
+  "@emnapi/core",
+  "@supabase/supabase-js",
+  "simple-git"
 ]
